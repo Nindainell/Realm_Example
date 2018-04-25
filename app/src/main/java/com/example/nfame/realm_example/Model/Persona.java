@@ -1,6 +1,10 @@
 package com.example.nfame.realm_example.Model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -50,8 +54,9 @@ public class Persona extends RealmObject {
         return dataNaix;
     }
 
-    public void setDataNaix(Date dataNaix) {
-        this.dataNaix = dataNaix;
+    public void setDataNaix(String dataNaix) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        this.dataNaix = sdf.parse(dataNaix);
     }
 
     public String getGenre() {
@@ -108,8 +113,27 @@ public class Persona extends RealmObject {
                             "Nom: " + getNom() + '\n' +
                             "Cognom: " + getCognom() + '\n' +
                             "Dni: " + getDni() + '\n' +
+                            "Edat:" + ageCalculator(dataNaix) + '\n' +
+                            "Genre:" + getGenre() + '\n' +
                             "Telefon: " + getTel() + '\n' +
                             "Email: " + getEmail() + '\n' +
                             "------------------------------" + '\n';
     }
+
+    public static int ageCalculator (Date birthDate){
+        int years = 0;
+
+        Calendar birthDay = Calendar.getInstance();
+        birthDay.setTimeInMillis(birthDate.getTime());
+
+        long currentTime = System.currentTimeMillis();
+        Calendar now = Calendar.getInstance();
+        now.setTimeInMillis(currentTime);
+
+        years = now.get(Calendar.YEAR) - birthDay.get(Calendar.YEAR);
+
+
+        return years;
+    }
+
 }

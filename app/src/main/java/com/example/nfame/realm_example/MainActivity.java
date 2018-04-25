@@ -8,6 +8,8 @@ import android.os.Bundle;
 import com.example.nfame.realm_example.Model.Persona;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
@@ -45,10 +47,12 @@ public class MainActivity extends AppCompatActivity {
         String nom = "Nik";
         String cognom = "Fernandez";
         String dni = "123456";
+        String fecha = "29/11/1981";
 
         Persona persona = realm.createObject(Persona.class, dni);
         persona.setNom(nom);
         persona.setCognom(cognom);
+        persona.setDataNaix(fecha);
 
 
 
