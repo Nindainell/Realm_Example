@@ -132,7 +132,6 @@ public class Persona extends RealmObject {
 
         years = now.get(Calendar.YEAR) - birthDay.get(Calendar.YEAR);
 
-
         return years;
     }
 
