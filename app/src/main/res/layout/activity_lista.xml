@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.Lista">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="Busqueda por Género:" />
+
+            <EditText
+                android:id="@+id/genreEdit"
+                android:layout_width="198dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:padding="5dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:id="@+id/spn2"
+                android:layout_weight="8"
+                android:text="Buscar"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:text="Busqueda entre:" />
+
+            <EditText
+                android:id="@+id/betweenEdit1"
+                android:layout_width="118dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:padding="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="15"
+                android:text=" Y " />
+
+            <EditText
+                android:id="@+id/betweenEdit2"
+                android:layout_width="118dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:padding="5dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:id="@+id/spn3"
+                android:layout_weight="12.7"
+                android:text="Buscar"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="5"
+                android:text="Busqueda por Edad:" />
+
+            <EditText
+                android:id="@+id/edatEdit"
+                android:layout_width="198dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3" />
+
+            <Button
+                android:id="@+id/spn1a"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_weight="8"
+                android:text="Mayor"/>
+
+            <Button
+                android:id="@+id/spn1b"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_weight="8"
+                android:text="Menor"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lsvLista"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

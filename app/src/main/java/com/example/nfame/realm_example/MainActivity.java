@@ -1,24 +1,39 @@
 package com.example.nfame.realm_example;
 
 import android.content.Context;
-
-import android.support.v7.app.AppCompatActivity;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.nfame.realm_example.Model.Persona;
+import com.example.nfame.realm_example.Views.Lista;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 import io.realm.Realm;
-import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
 
     private Realm realm;
     private Context context;
+    EditText nom;
+    EditText cognom;
+    EditText data;
+    EditText dni;
+    EditText genre;
+    EditText tel;
+    EditText email;
+    Button createBttn;
 
 
     @Override
@@ -26,45 +41,93 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = getApplicationContext();
-        Realm.init(context);
 
+
+        Realm.init(context);
         realm = Realm.getDefaultInstance();
-        deletePersona(0);
-        //createItem(realm);
-        searchPersona(realm);
+
+        nom = findViewById(R.id.nomText);
+        cognom = findViewById(R.id.cognomText);
+        dni = findViewById(R.id.dniText);
+        data = findViewById(R.id.naixText);
+        genre = findViewById(R.id.genreText);
+        tel = findViewById(R.id.telText);
+        email = findViewById(R.id.mailText);
+        createBttn = findViewById(R.id.createButton);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        myToolbar.setTitle("RealmExample");
+        setSupportActionBar(myToolbar);
+
+        createBttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                try {
+                    createPersona(realm);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                realm.commitTransaction();
+            }
+        });
     }
 
-    public void createItem(Realm realm) throws ParseException {
-        realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
-        createPersona(realm);
-        realm.commitTransaction();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.toolbarmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(this,Lista.class);
+                startActivity(intent);
+                return true;
+
+            default:
+
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
     public void createPersona(Realm realm) throws ParseException {
-        //Scanner sc = new Scanner(System.in);
+        RealmResults<Persona> personas = realm.where(Persona.class).equalTo("dni",dni.getText().toString()).findAll();
+        int repited = 0;
+        for(Persona p: personas){
+            if(p.getDni().equals(dni.getText().toString())){
+                repited++;
+            }
+        }
+        System.out.println(repited);
 
-        String nom = "Nik";
-        String cognom = "Fernandez";
-        String dni = "123456";
-        String fecha = "29/11/1981";
-
-        Persona persona = realm.createObject(Persona.class, dni);
-        persona.setNom(nom);
-        persona.setCognom(cognom);
-        persona.setDataNaix(fecha);
-
-
-
-        System.out.println("                    PERSONA CREADA");
-        System.out.println("_____________________________________________________________");
-    }
-
-    public void searchPersona(Realm realm) {
-        realm = Realm.getDefaultInstance();
-        RealmQuery<Persona> query = realm.where(Persona.class);
-        RealmResults<Persona> personas = query.findAll();
-        System.out.println(personas);
+        if(repited>0){
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("Alert");
+            alertDialog.setMessage("Error de clave primaria, persona ya existente");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+            System.out.println("Ya existe");
+        }else{
+            Persona persona = realm.createObject(Persona.class, dni.getText().toString());
+            persona.setNom(nom.getText().toString());
+            persona.setCognom(cognom.getText().toString());
+            persona.setDataNaix(data.getText().toString());
+            persona.setGenre(genre.getText().toString());
+            persona.setTel(tel.getText().toString());
+            persona.setEmail(email.getText().toString());
+            persona.setEdat(persona.getEdat());
+        }
     }
 
     public void deletePersona(int pos) {

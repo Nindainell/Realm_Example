@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.example.nfame.realm_example.Views.Mod">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -29,56 +29,56 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/nomText"
+            android:id="@+id/nomTextM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:hint="Nombre: "
             />
         <EditText
-            android:id="@+id/cognomText"
+            android:id="@+id/cognomTextM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:hint="Apellidos: "
             />
         <EditText
-            android:id="@+id/dniText"
+            android:id="@+id/dniTextM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:hint="Dni: "
             />
         <EditText
-            android:id="@+id/naixText"
+            android:id="@+id/naixTextM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:hint="Fecha de Nacimiento(dd/MM/YYYY): "
             />
         <EditText
-            android:id="@+id/genreText"
+            android:id="@+id/genreTextM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:hint="Género(M/F): "
             />
         <EditText
-            android:id="@+id/telText"
+            android:id="@+id/telTextM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:hint="Teléfono: "
             />
         <EditText
-            android:id="@+id/mailText"
+            android:id="@+id/mailTextM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:hint="Email: "
             />
         <Button
-            android:id="@+id/createButton"
+            android:id="@+id/modButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="25dp"

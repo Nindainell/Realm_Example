@@ -20,7 +20,16 @@ public class Persona extends RealmObject {
     private Date dataNaix;
     private String genre;
     private String tel;
+    private int edat;
     private String email;
+
+    public int getEdat() {
+        return ageCalculator(dataNaix);
+    }
+
+    public void setEdat(int edat) {
+        this.edat = edat;
+    }
 
     public Persona(String dni, String nom, String cognom, Date dataNaix, String genre, String tel, String email) {
         this.dni = dni;
@@ -109,16 +118,29 @@ public class Persona extends RealmObject {
 
     @Override
     public String toString(){
-        return "Persona: " + '\n' +
-                            "Nom: " + getNom() + '\n' +
-                            "Cognom: " + getCognom() + '\n' +
-                            "Dni: " + getDni() + '\n' +
-                            "Edat:" + ageCalculator(dataNaix) + '\n' +
-                            "Genre:" + getGenre() + '\n' +
-                            "Telefon: " + getTel() + '\n' +
-                            "Email: " + getEmail() + '\n' +
-                            "------------------------------" + '\n';
+        if(dataNaix!=null){
+            return "Persona: " + '\n' +
+                    "Nom: " + getNom() + '\n' +
+                    "Cognom: " + getCognom() + '\n' +
+                    "Dni: " + getDni() + '\n' +
+                    "Edat:" + ageCalculator(dataNaix) + '\n' +
+                    "Genre:" + getGenre() + '\n' +
+                    "Telefon: " + getTel() + '\n' +
+                    "Email: " + getEmail() + '\n' +
+                    "------------------------------" + '\n';
+        }else {
+            return "Persona: " + '\n' +
+                    "Nom: " + getNom() + '\n' +
+                    "Cognom: " + getCognom() + '\n' +
+                    "Dni: " + getDni() + '\n' +
+                    "Genre:" + getGenre() + '\n' +
+                    "Telefon: " + getTel() + '\n' +
+                    "Email: " + getEmail() + '\n' +
+                    "------------------------------" + '\n';
+        }
+
     }
+
 
     public static int ageCalculator (Date birthDate){
         int years = 0;
