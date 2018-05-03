@@ -29,6 +29,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/item_any"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
         <Button
             android:text="X"
             android:id="@+id/item_bttn"

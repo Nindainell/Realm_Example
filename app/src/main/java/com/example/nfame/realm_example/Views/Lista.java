@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.nfame.realm_example.Adapters.ListPersonaAdapter;
+import com.example.nfame.realm_example.MainActivity;
+import com.example.nfame.realm_example.Model.Migration;
 import com.example.nfame.realm_example.Model.Persona;
 import com.example.nfame.realm_example.R;
 
@@ -21,6 +23,7 @@ import java.util.List;
 
 import io.realm.Case;
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 
 public class Lista extends AppCompatActivity {
@@ -51,7 +54,10 @@ public class Lista extends AppCompatActivity {
 
         lsvLista = findViewById(R.id.lsvLista);
         llista = new ArrayList<>();
+
         realm = Realm.getDefaultInstance();
+
+
         loadPersonas();
 
         spn1a.setOnClickListener(new View.OnClickListener() {

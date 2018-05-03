@@ -29,6 +29,7 @@ public class ListPersonaAdapter extends RealmBaseAdapter<Persona> implements Lis
         TextView txvCognom;
         TextView txvGenre;
         TextView txvEdat;
+        TextView txvAny;
         Button eraseButton, modButton;
     }
 
@@ -47,8 +48,10 @@ public class ListPersonaAdapter extends RealmBaseAdapter<Persona> implements Lis
             viewHolder.txvCognom = convertView.findViewById(R.id.item_cognom);
             viewHolder.txvGenre = convertView.findViewById(R.id.item_genre);
             viewHolder.txvEdat = convertView.findViewById(R.id.item_edat);
+            viewHolder.txvAny = convertView.findViewById(R.id.item_any);
             viewHolder.eraseButton = convertView.findViewById(R.id.item_bttn);
             viewHolder.modButton = convertView.findViewById(R.id.item_bttn2);
+
 
             convertView.setTag(viewHolder);
         } else {
@@ -80,6 +83,7 @@ public class ListPersonaAdapter extends RealmBaseAdapter<Persona> implements Lis
             viewHolder.txvCognom.setText(item.getCognom());
             viewHolder.txvGenre.setText(item.getGenre());
             viewHolder.txvEdat.setText(String.valueOf(item.ageCalculator(item.getDataNaix())));
+            viewHolder.txvAny.setText(String.valueOf(item.yearCalc(item.getEdat())));
         }else {
             viewHolder.txvNom.setText(item.getNom());
             viewHolder.txvCognom.setText(item.getCognom());

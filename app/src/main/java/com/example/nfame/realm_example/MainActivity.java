@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.nfame.realm_example.Model.Migration;
 import com.example.nfame.realm_example.Model.Persona;
 import com.example.nfame.realm_example.Views.Lista;
 
@@ -20,6 +21,7 @@ import java.text.ParseException;
 
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = getApplicationContext();
 
-
         Realm.init(context);
+
         realm = Realm.getDefaultInstance();
 
         nom = findViewById(R.id.nomText);
@@ -127,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
             persona.setTel(tel.getText().toString());
             persona.setEmail(email.getText().toString());
             persona.setEdat(persona.getEdat());
+            persona.setAnyNaix(persona.getAnyNaix());
         }
     }
 

@@ -22,6 +22,15 @@ public class Persona extends RealmObject {
     private String tel;
     private int edat;
     private String email;
+    @Index private int anyNaix;
+
+    public int getAnyNaix() {
+        return yearCalc(edat);
+    }
+
+    public void setAnyNaix(int anyNaix) {
+        this.anyNaix = anyNaix;
+    }
 
     public int getEdat() {
         return ageCalculator(dataNaix);
@@ -155,6 +164,15 @@ public class Persona extends RealmObject {
         years = now.get(Calendar.YEAR) - birthDay.get(Calendar.YEAR);
 
         return years;
+    }
+
+    public static int yearCalc (int edat){
+        int any;
+        Calendar now = Calendar.getInstance();
+        long currentTime = System.currentTimeMillis();
+        now.setTimeInMillis(currentTime);
+        any = now.get(Calendar.YEAR) - edat;
+        return any;
     }
 
 }

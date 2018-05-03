@@ -16,7 +16,7 @@ public class Migration implements RealmMigration {
         if(oldVersion == 0) {
             Log.d("Migration", "Actualizando a la versión 1");
             RealmObjectSchema personaSchema = schema.get("Persona");
-            personaSchema.addIndex("nom");
+            personaSchema.addIndex("anyNaix");
             oldVersion++;
         }
     }
